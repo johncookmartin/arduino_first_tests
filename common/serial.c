@@ -1,6 +1,7 @@
 #include "serial.h"
 #include <avr/io.h>
 #include <stdio.h>
+#include <stdarg.h>
 
 void initUART(unsigned int baud) {
 	unsigned int ubrr = F_CPU/8/baud-1;
@@ -27,6 +28,15 @@ void transmitString (const char* str) {
 	}
 	transmitByte('\r');
 	transmitByte('\n');
+}
+
+void transmitFormattedString(const char* fmt, ...){
+	char buf[64];
+	va_list args;
+	va_start(args, fmt);
+	vsnprintf(buf, sizeof(buf), fmt, args);
+	va_end(args);
+	transmitString(buf);
 }
 
 void printDec(int num){
