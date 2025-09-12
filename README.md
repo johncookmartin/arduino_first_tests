@@ -2,6 +2,16 @@
 
 ## Quick Commands Reference
 
+### Pass Port to WSL
+
+In Windows Powershell
+
+```
+usbipd list
+usbipd bind --busid {BUSID}
+usbipd attach --wsl --busid {BUSID}
+```
+
 ### Build and Flash a Program
 
 Build a program:
