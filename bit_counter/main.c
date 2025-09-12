@@ -1,3 +1,4 @@
+#include "../common/counter.h"
 #include <avr/io.h>
 #include <util/delay.h>
 #include <stdint.h>
@@ -20,26 +21,10 @@ PB5 ->         D13 ->                               L1
 
 */
 
-uint8_t increment(uint8_t value, uint8_t max) {
-    if (value == max) {
-        return 0;
-    } else {
-        return value + 1;
-    }
-}
-
-uint8_t decrement(uint8_t value, uint8_t max) {
-    if (value == 0){
-        return max;
-    } else {
-        return value - 1;
-    }
-}
-
 void auto_bit_counter(uint8_t max){
     uint8_t prev = max;
     do {
-        uint8_t current = increment(prev, max);
+        uint8_t current = increment(prev, max, 0);
         PORTD = current << 2;
         PORTB = current >> 6;
         _delay_ms(1000);
@@ -51,7 +36,7 @@ uint8_t bit_counter(uint8_t prev, uint8_t max){
     if (!(PINB & (1 << PB2))) {
         _delay_ms(50);
         if (!(PINB & (1 << PB2))) {
-            prev = increment(prev, max);
+            prev = increment(prev, max, 0);
             PORTB ^= (1 << PB5);
             while(!(PINB & (1 << PB2)));
         }
@@ -59,7 +44,7 @@ uint8_t bit_counter(uint8_t prev, uint8_t max){
     if (!(PINB & (1 << PB3))) {
         _delay_ms(50);
         if (!(PINB & (1 << PB3))) {
-            prev = decrement(prev, max);
+            prev = decrement(prev, max, 0);
             PORTB ^= (1 << PB5);
             while(!(PINB & (1 << PB3)));
         }
@@ -67,7 +52,7 @@ uint8_t bit_counter(uint8_t prev, uint8_t max){
     if (!(PINB & (1 << PB4))) {
         _delay_ms(50);
         if (!(PINB & (1 << PB4))) {
-            prev = decrement(prev, max);
+            prev = decrement(prev, max, 0);
             PORTB ^= (1 << PB5);
             while(!(PINB & (1 << PB4)));
         }

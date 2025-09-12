@@ -1,5 +1,5 @@
-#include "serial.h"
-#include "analog.h"
+#include "../common/analog.h"
+#include "../common/serial.h"
 #include <avr/io.h>
 #include <stdlib.h>
 #include <stdbool.h>
