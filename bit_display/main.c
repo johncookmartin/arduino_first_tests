@@ -41,14 +41,30 @@ int main(void) {
 
         uint8_t display = 0;
         switch (current) {
-            case 1: display = 0b00000001; break;
-            case 2: display = 0b00000011; break;
-            case 3: display = 0b00000111; break;
-            case 4: display = 0b00001111; break;
-            case 5: display = 0b00011111; break;
-            case 6: display = 0b00111111; break;
-            case 7: display = 0b01111111; break;
-            default: display = 0; break;
+            case 1: 
+                display = 0b00000001; 
+                break;
+            case 2: 
+                display = 0b00000011; 
+                break;
+            case 3: 
+                display = 0b00000111; 
+                break;
+            case 4: 
+                display = 0b00001111; 
+                break;
+            case 5: 
+                display = 0b00011111; 
+                break;
+            case 6: 
+                display = 0b00111111; 
+                break;
+            case 7: 
+                display = 0b01111111; 
+                break;
+            default: 
+                display = 0; 
+                break;
         }
 
         uint8_t pd_bits = (display << 2);
