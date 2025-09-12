@@ -65,7 +65,6 @@ int main(void) {
     DDRD = 0b11111100;
     DDRB = 0b00100011; // Set PB5 as output for LED, PB0, PB1 as output
     PORTB = 0b00011100; // Internal pull-ups
-    DDRB |= (1 << PB5); // Set LED for debug
 
     uint8_t current = 0;
 

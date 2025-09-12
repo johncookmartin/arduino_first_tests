@@ -1,6 +1,4 @@
 
-// AVR C version for Atmega328p (no Arduino libraries)
-#define F_CPU 16000000UL
 #include "../common/serial.h"
 #include "../common/counter.h"
 #include <avr/io.h>
