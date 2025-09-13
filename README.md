@@ -1,5 +1,7 @@
 # arduino_first_tests
 
+repository for all initial experiments with arduino Uno
+
 ## Quick Commands Reference
 
 ### Pass Port to WSL
