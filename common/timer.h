@@ -9,5 +9,5 @@ enum timer_prescaler {
    PRESCALE_1024 = 1024
 };
 
-void initTimer(uint16_t count, int frequency, enum timer_prescaler divider);
-void setFrequency(int frequency);
+void initTimer(uint16_t frequency, enum timer_prescaler divider);
+void setFrequency(int new_frequency);
