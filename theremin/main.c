@@ -133,25 +133,25 @@ uint16_t read_pololu_tone(uint16_t current_position){
 uint16_t convert_pololu_tone(uint16_t current_position){
    PORTD &= ~(0b11111100);
    PORTB &= ~(0b00000011);
-   if (current_position < 1000){
+   if (current_position < 1500){
       PORTD |= (1 << PD2);
       return 2000;
-   } else if(current_position < 2000){
+   } else if(current_position < 2500){
       PORTD |= (1 << PD3);
       return 1780;
-   } else if (current_position < 3000){
+   } else if (current_position < 3500){
       PORTD |= (1 << PD4);
       return 1587;
-   } else if (current_position < 4000) {
+   } else if (current_position < 4500) {
       PORTD |= (1 << PD5);
       return 1498;
-   } else if (current_position < 5000) {
+   } else if (current_position < 5500) {
       PORTD |= (1 << PD6);
       return 1335;
-   } else if (current_position < 6000){
+   } else if (current_position < 6500){
       PORTD |= (1 << PD7);
       return 1189;
-   } else if (current_position < 7000){
+   } else if (current_position < 7500){
       PORTB |= (1 << PB0);
       return 1059;
    } else {

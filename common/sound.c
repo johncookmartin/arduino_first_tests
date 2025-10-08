@@ -8,6 +8,7 @@ static volatile bool tone_enabled = false;
 static volatile uint8_t *ddr;
 static volatile uint8_t *port;
 static uint8_t pin = 0;
+static uint8_t volume_level = 1;
 
 
 void initSound(volatile uint8_t *input_port, volatile uint8_t *input_ddr, uint8_t input_pin){
@@ -28,7 +29,17 @@ void mute(){
 }
 
 ISR(TIMER1_COMPA_vect) {
+   static uint8_t pwm_counter = 0;
+
    if (tone_enabled){
-      *port ^= (1 << pin);
+      pwm_counter++;
+      if (pwm_counter >= 10) pwm_counter = 0;
+
+      if (pwm_counter < volume_level) {
+         *port ^= (1 << pin);
+      } else {
+         *port &= ~(1 << pin);
+      }
+      
    }
 }
